@@ -1,0 +1,6 @@
+.component {
+}
+
+.box {
+  @apply flex flex-col space-y-4  rounded-md p-3 m-4 bg-slate-50 shadow-lg;
+}
