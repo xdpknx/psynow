@@ -10,7 +10,7 @@ interface Props {
 }
 const QuestionPage: NextPageWithLayout<Props> = ({ question }) => {
   return (
-    <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
+    <section>
       <QuestionCard
         title={question.title}
         id={question.id}
