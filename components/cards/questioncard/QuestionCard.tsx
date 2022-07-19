@@ -63,9 +63,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({ title, id, answers }) => {
       {errors.score?.message && (
         <p className="font-bold text-red-500">{errors.score.message} </p>
       )}
-      <button className="border-1 p-2 px-4 sm:px-6 bg-blue-500 rounded text-white w-full">
-        Submit
-      </button>
+      <button className="btn-primary">Submit</button>
     </form>
   );
 };

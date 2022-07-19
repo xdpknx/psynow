@@ -25,9 +25,7 @@ const ResultPage: NextPageWithLayout = () => {
       <h2 className="font-bold text-lg text-indigo-500">Result</h2>
       {result}
       <Link href="/" passHref>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 rounded font-semibold w-full my-1">
-          Retake Test
-        </button>
+        <button className="btn-primary">Retake Test</button>
       </Link>
     </section>
   );

@@ -15,9 +15,7 @@ const Home: NextPageWithLayout = () => {
         or an Extrovert.
       </p>
       <Link href="questions/1" passHref>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 rounded font-semibold w-full my-1">
-          Start Test
-        </button>
+        <button className="btn-primary">Start Test</button>
       </Link>
     </section>
   );
