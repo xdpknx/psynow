@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Answer } from '@types';
 import router from 'next/router';
 import { useForm } from 'react-hook-form';
 import { number, object } from 'yup';
+import { Answer } from '../../../types';
 import styles from './QuestionCard.module.css';
 
 export interface IQuestionCard {
@@ -61,7 +61,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({ title, id, answers }) => {
         );
       })}
       {errors.score?.message && (
-        <p className="font-bold text-red-500">{errors.score.message} </p>
+        <span className="font-bold text-red-500">{errors.score.message} </span>
       )}
       <button className="btn-primary">Submit</button>
     </form>
