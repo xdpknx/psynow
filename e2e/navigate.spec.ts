@@ -33,3 +33,19 @@ test('should navigate to results page after last question', async ({
   // The new url should be "/result" (baseURL is used there)
   await expect(page).toHaveURL('http://localhost:3000/result');
 });
+
+//Listen, but with only with half an ear
+
+test('should navigate to next page when an option is selected and submit is clicked', async ({
+  page,
+}) => {
+  // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+  await page.goto('http://localhost:3000/questions/1');
+
+  await page.check('id=Listen, but with only with half an ear');
+
+  await page.click('text=Submit');
+
+  // The new url should be "/result" (baseURL is used there)
+  await expect(page).toHaveURL('http://localhost:3000/questions/2');
+});

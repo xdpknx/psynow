@@ -52,7 +52,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({ title, id, answers }) => {
           <div key={answer.id} className="flex flex-row">
             <input
               type="radio"
-              id={answer.id.toString()}
+              id={answer.text}
               value={answer.score}
               {...register('score')}
             ></input>
