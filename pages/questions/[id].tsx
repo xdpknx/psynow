@@ -10,7 +10,7 @@ interface Props {
 }
 const QuestionPage: NextPageWithLayout<Props> = ({ question }) => {
   return (
-    <section>
+    <section className="psybox">
       <QuestionCard
         title={question.title}
         id={question.id}

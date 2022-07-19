@@ -21,7 +21,7 @@ const ResultPage: NextPageWithLayout = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
+    <section className="psybox">
       <h2 className="font-bold text-lg text-indigo-500">Result</h2>
       {result}
       <Link href="/" passHref>
