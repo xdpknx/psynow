@@ -1,14 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Answer, Question } from '@prisma/client';
 import router from 'next/router';
 import { useForm } from 'react-hook-form';
+import { Optional } from 'utility-types';
 import { number, object } from 'yup';
-import { Answer } from '../../../types';
 import styles from './QuestionCard.module.css';
 
-export interface IQuestionCard {
-  title: string;
-  id: number;
-  answers: Answer[];
+type QuestionCardAnswer = Optional<Answer, 'questionId'>;
+export interface IQuestionCard extends Question {
+  answers: QuestionCardAnswer[];
 }
 interface IFormData {
   score: number;
@@ -47,7 +47,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({ title, id, answers }) => {
     <form className={styles.box} onSubmit={handleSubmit(onSubmit)}>
       <h1 className="font-bold">Question {id}</h1>
       <h2 className="font-bold text-lg ">{title}</h2>
-      {answers.map((answer: Answer) => {
+      {answers.map((answer: QuestionCardAnswer) => {
         return (
           <div key={answer.id} className="flex flex-row">
             <input
