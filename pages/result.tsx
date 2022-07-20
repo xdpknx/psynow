@@ -23,7 +23,7 @@ const ResultPage: NextPageWithLayout = () => {
   return (
     <section className="psybox">
       <h2 className="font-bold text-lg text-indigo-500">Result</h2>
-      {result}
+      <h1>{result}</h1>
       <Link href="/" passHref>
         <button className="btn-primary">Retake Test</button>
       </Link>

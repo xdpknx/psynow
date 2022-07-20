@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import questions from '../prisma/data';
 
 test('should navigate to the questions/1 page from home page', async ({
   page,
@@ -42,10 +43,73 @@ test('should navigate to next page when an option is selected and submit is clic
   // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
   await page.goto('http://localhost:3000/questions/1');
 
-  await page.check('id=Listen, but with only with half an ear');
+  const answer = questions[0].answers.create[0].text;
+
+  await page.check(`id=${answer}`);
 
   await page.click('text=Submit');
 
   // The new url should be "/result" (baseURL is used there)
   await expect(page).toHaveURL('http://localhost:3000/questions/2');
+});
+
+test('it should show Introvert if all questions are answered using the first option', async ({
+  page,
+}) => {
+  // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+  await page.goto('http://localhost:3000');
+
+  await page.click('text=Start Test');
+
+  for (var question of questions) {
+    const answer = question.answers.create[0].text;
+    await page.check(`id=${answer}`);
+    await page.click('text=Submit');
+  }
+  // The new url should be "/result" (baseURL is used there)
+  await expect(page).toHaveURL('http://localhost:3000/result');
+
+  await expect(page.locator('h1')).toContainText('Introvert');
+});
+
+test('it should show Extrovert if all questions are answered using the last option', async ({
+  page,
+}) => {
+  // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+  await page.goto('http://localhost:3000');
+
+  await page.click('text=Start Test');
+
+  for (var question of questions) {
+    const answer = question.answers.create[3].text;
+    await page.check(`id=${answer}`);
+    await page.click('text=Submit');
+  }
+  // The new url should be "/result" (baseURL is used there)
+  await expect(page).toHaveURL('http://localhost:3000/result');
+
+  await expect(page.locator('h1')).toContainText('Extrovert');
+});
+
+test('it should navigate back to home when Retake Test is clicked after a test', async ({
+  page,
+}) => {
+  // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+  await page.goto('http://localhost:3000');
+
+  await page.click('text=Start Test');
+
+  for (var question of questions) {
+    const answer = question.answers.create[3].text;
+    await page.check(`id=${answer}`);
+    await page.click('text=Submit');
+  }
+  // The new url should be "/result" (baseURL is used there)
+  await expect(page).toHaveURL('http://localhost:3000/result');
+
+  await expect(page.locator('h1')).toContainText('Extrovert');
+
+  await page.click('text=Retake Test');
+
+  await expect(page).toHaveURL('http://localhost:3000');
 });
