@@ -53,7 +53,7 @@ test('should navigate to next page when an option is selected and submit is clic
   await expect(page).toHaveURL('http://localhost:3000/questions/2');
 });
 
-test('it should show Introvert if all questions are answered using the first option', async ({
+test('should show Introvert if all questions are answered using the first option', async ({
   page,
 }) => {
   // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
@@ -72,7 +72,7 @@ test('it should show Introvert if all questions are answered using the first opt
   await expect(page.locator('h1')).toContainText('Introvert');
 });
 
-test('it should show Extrovert if all questions are answered using the last option', async ({
+test('should show Extrovert if all questions are answered using the last option', async ({
   page,
 }) => {
   // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
@@ -91,7 +91,7 @@ test('it should show Extrovert if all questions are answered using the last opti
   await expect(page.locator('h1')).toContainText('Extrovert');
 });
 
-test('it should navigate back to home when Retake Test is clicked after a test', async ({
+test('should navigate back to home when Retake Test is clicked after a test', async ({
   page,
 }) => {
   // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
