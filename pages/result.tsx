@@ -6,14 +6,11 @@ import { NextPageWithLayout } from './page';
 const ResultPage: NextPageWithLayout = () => {
   const [result, setResult] = useState<string | null>(null);
   const getResult = () => {
-    const result = localStorage.getItem('total');
-
-    if (!result) {
+    const total = localStorage.getItem('total');
+    if (!total) {
       return;
     }
-
-    Number(result) > 10 ? setResult('Extrovert') : setResult('Introvert');
-
+    Number(total) > 10 ? setResult('Extrovert') : setResult('Introvert');
     localStorage.removeItem('total');
   };
   useEffect(() => {
