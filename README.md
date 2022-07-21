@@ -38,3 +38,7 @@ commit messages are verified by commit lint before commiting.
 
 prettier used for formatting
 
+# Hosted on Vercel
+
+https://psynow-vercel.vercel.app
+
