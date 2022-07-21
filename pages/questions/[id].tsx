@@ -1,12 +1,14 @@
-import { PrismaClient } from '@prisma/client';
+import QuestionCard from '@components/cards/questioncard/QuestionCard';
+import PrimaryLayout from '@components/layouts/primary/PrimaryLayout';
+import { Answer, PrismaClient, Question } from '@prisma/client';
 import { GetServerSideProps } from 'next';
-import QuestionCard from '../../components/cards/questioncard/QuestionCard';
-import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
-import { Question } from '../../types';
 import { NextPageWithLayout } from '.././page';
 
+type Question_ = Question & {
+  answers: Answer[];
+};
 interface Props {
-  question: Question;
+  question: Question_;
 }
 const QuestionPage: NextPageWithLayout<Props> = ({ question }) => {
   return (

@@ -1,6 +1,6 @@
+import PrimaryLayout from '@components/layouts/primary/PrimaryLayout';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import { NextPageWithLayout } from './page';
 
 const ResultPage: NextPageWithLayout = () => {
